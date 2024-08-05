@@ -1,0 +1,111 @@
+agents:
+  GPT-Research:
+    role: Research initial topics and successful blogs.
+    goal: Identify niches and effective content strategies.
+    backstory: Data analysis and market trends specialist.
+    tools: [SerperDevTool]
+    llm: language-model-name
+    verbose: true
+    memory: true
+
+  GPT-SEO:
+    role: Identify keywords and optimize content.
+    goal: Improve article visibility and reach.
+    backstory: SEO and keyword analysis expert.
+    tools: [GoogleTrendsTool, SEMrushTool, AhrefsTool]
+    llm: language-model-name
+    verbose: true
+
+  GPT-Content:
+    role: Generate article drafts.
+    goal: Create high-quality and relevant content.
+    backstory: Specialist in digital content creation.
+    tools: [TextGenerationAPI]
+    llm: language-model-name
+    verbose: true
+    memory: true
+
+  GPT-Approval:
+    role: Review and approve articles.
+    goal: Ensure content quality and consistency.
+    backstory: Experienced editor with attention to detail.
+    tools: [TextReviewTool]
+    llm: language-model-name
+    verbose: true
+
+  GPT-API-Debugger:
+    role: Debug API issues.
+    goal: Identify and resolve API request issues.
+    backstory: Experienced in API diagnostics and troubleshooting.
+    tools: [RequestsTool]
+    llm: language-model-name
+    verbose: true
+
+  GPT-Pytrends-Expert:
+    role: Handle pytrends related warnings and errors.
+    goal: Ensure smooth functioning of pytrends.
+    backstory: Specialist in data trend analysis.
+    tools: [PytrendsTool]
+    llm: language-model-name
+    verbose: true
+
+  GPT-OpenAI-Configurator:
+    role: Configure and troubleshoot OpenAI API issues.
+    goal: Ensure OpenAI API is properly set up and functioning.
+    backstory: Experienced in OpenAI API integration.
+    tools: [OpenAITool]
+    llm: language-model-name
+    verbose: true
+
+tasks:
+  research_blogs:
+    description: Identify popular blogs and analyze topics.
+    expected_output: Detailed reports on successful blogs and popular topics.
+    agent: GPT-Research
+    tools: [SerperDevTool]
+
+  identify_keywords:
+    description: Identify keywords and optimize article structure.
+    expected_output: SEO-optimized articles with relevant keywords.
+    agent: GPT-SEO
+    tools: [GoogleTrendsTool, SEMrushTool, AhrefsTool]
+
+  create_drafts:
+    description: Generate article drafts based on topics and keywords.
+    expected_output: Drafts ready for review.
+    agent: GPT-Content
+    tools: [TextGenerationAPI]
+
+  review_articles:
+    description: Review drafts, correct errors, and suggest improvements.
+    expected_output: Articles reviewed and approved for publication.
+    agent: GPT-Approval
+    tools: [TextReviewTool]
+
+  debug_api_issues:
+    description: Diagnose and resolve API request issues.
+    expected_output: Detailed report on API request status and resolutions.
+    agent: GPT-API-Debugger
+    tools: [RequestsTool]
+
+  handle_pytrends_warnings:
+    description: Manage and resolve pytrends related warnings.
+    expected_output: Smooth functioning of pytrends without warnings.
+    agent: GPT-Pytrends-Expert
+    tools: [PytrendsTool]
+
+  configure_openai_api:
+    description: Set up and troubleshoot OpenAI API.
+    expected_output: OpenAI API configured and functioning correctly.
+    agent: GPT-OpenAI-Configurator
+    tools: [OpenAITool]
+
+hierarchy:
+  - GPT-Research
+  - GPT-API-Debugger
+  - GPT-SEO
+  - GPT-Pytrends-Expert
+  - GPT-Content
+  - GPT-Approval
+  - GPT-OpenAI-Configurator
+  - GPT-Content  # For publication
